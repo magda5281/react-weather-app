@@ -1,0 +1,10 @@
+.App {
+  margin: 30px auto;
+  max-width: 650px;
+  font-family: "Google Sans", arial, sans-serif;
+}
+
+.App footer {
+  margin-top: 10px;
+  font-size: 11px;
+}
