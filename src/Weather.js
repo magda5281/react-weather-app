@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./Weather.css";
 import axios from "axios";
+import FormatedDate from "./FormatedDate";
 
 export default function Weather(props) {
   
@@ -26,14 +27,14 @@ export default function Weather(props) {
   function handleResponse(response){
 
   setWeatherData({
-    ready:true,
+    ready: true,
     temperature: response.data.main.temp,
     city: response.data.name,
     pressure:response.data.main.pressure,
     humidity:response.data.main.humidity,
     wind: response.data.wind.speed,
     description: response.data.weather[0].main,
-    date: "Thursday, 13 May 2021, 11:38",
+    date: new Date(response.data.dt * 1000),
     icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   });
 
@@ -66,7 +67,7 @@ if (weatherData.ready) {
       </h1>
       <ul>
           <li className ="date">
-            {weatherData.date}
+            <FormatedDate date={weatherData.date} />
           </li>
           <li className = "description">
           {weatherData.description}
