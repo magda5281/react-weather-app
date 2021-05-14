@@ -20,6 +20,5 @@ export default function FormatedDate(props){
     return (<li className ="date">
         {day}, {date} {month} {year}, {hour}:{minutes}
 
-
     </li>
 )}
