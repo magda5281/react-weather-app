@@ -1,10 +1,47 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Weather.css";
+import axios from "axios";
 
-export default function Weather(){
-    return (
-    <div className="Weather">
-      
+export default function Weather(props) {
+  
+  // get the weather data from axios: need to store url in const or let
+  // call url via axios and handle response
+  // from response you get all data needed
+  // instead of creating separate state for each data element create a state and variable to store data in an object
+  // handleResponse is calling function setWeatherData which stores value of weather in an object called weather
+  // to dispaly weather data in app replace elements in HTML with weatherData object values. 
+  // using conditional rendering is necessary otherwise api would be called multiple times 
+  // we returning result only when data is ready 
+  //apiUrl is called only when ther is no data
+  // we have assigned default useState as an object because we are expecting multiple values from response 
+  // originally we have created second useState that took care of saying if data is ready or not however 
+  // we can assign to useState a boolen in an object that is set as default 
+  // that way  we are saying in weatherData that it is ready when we setting the weatherData 
+  // so we are saying if weatherData is ready return html with all the data and 
+  //if not call api and show response that it is loading
+
+
+  const [weatherData, setWeatherData]= useState({ready:false});
+  
+  function handleResponse(response){
+
+  setWeatherData({
+    ready:true,
+    temperature: response.data.main.temp,
+    city: response.data.name,
+    pressure:response.data.main.pressure,
+    humidity:response.data.main.humidity,
+    wind: response.data.wind.speed,
+    description: response.data.weather[0].main,
+    date: "Thursday, 13 May 2021, 11:38",
+    icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  });
+
+}
+
+if (weatherData.ready) {
+  return (
+    <div className="Weather">     
       <form>
         <div className="row mb-2">
           <div className="col-9">
@@ -25,36 +62,43 @@ export default function Weather(){
         </div>
       </form>       
       <h1>
-        Warsaw
+        {weatherData.city}
       </h1>
       <ul>
           <li className ="date">
-            Thursday, 13 May 2021, 11:38
+            {weatherData.date}
           </li>
           <li className = "description">
-            Broken clouds
+          {weatherData.description}
           </li>
       </ul>
       <div className = "row clearfix justify-content-between">
           <div className = "col-6 clearfix">
-            <img src = "https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
-            alt = "Broken clouds" className="mainImg"/>
-            <span className="temperature">11</span><span className="units">℃</span>
+            <img src = {weatherData.icon}
+            alt =  {weatherData.description} className="mainImg"/>
+            <span className="temperature">{Math.round(weatherData.temperature)}</span><span className="units">℃</span>
           </div>
           <div className="col-6">
             <ul className= "conditions px-5">
               <li>
-                Humidity: 80%
+                Humidity: {Math.round(weatherData.humidity)}%
               </li>
               <li>
-                Wind: 8 km/h
+                Wind: {Math.round(weatherData.wind)}m/s
               </li>
               <li>
-                Pressure: 1008 hPa
+                Pressure: {Math.round(weatherData.pressure)}hPa
               </li>
             </ul>
           </div>
       </div>
     </div> 
-    )
+    );
+} else {
+  const apiKey = "e9c021b631259222d3dcbc9761c3c90c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(handleResponse);
+
+  return "Loading the weather..."
+} 
 }
