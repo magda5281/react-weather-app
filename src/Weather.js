@@ -35,10 +35,12 @@ export default function Weather(props) {
     pressure:response.data.main.pressure,
     humidity:response.data.main.humidity,
     wind: response.data.wind.speed,
-    description: response.data.weather[0].main,
+    description: response.data.weather[0].description,
     date: new Date(response.data.dt * 1000),
-    icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  });}
+    icon: response.data.weather[0].icon
+  })}
+ 
+  
 
   function Search(){
     const apiKey = "e9c021b631259222d3dcbc9761c3c90c";

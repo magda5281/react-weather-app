@@ -28,6 +28,7 @@
 .Weather .description {
   font-size: 16px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .Weather .temperature {
@@ -35,14 +36,17 @@
   line-height: 64px;
   font-size: 60px;
   vertical-align: top;
+  margin-left: 10px;
 }
 
 .Weather .units {
   line-height: 16px;
   position: relative;
-  top: -16px;
+  top: -23px;
 }
-.Weather .mainImg {
+.Weather canvas {
   line-height: 64px;
   vertical-align: middle;
+  display: inline-block;
+  margin-top: 10px;
 }
