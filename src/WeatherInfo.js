@@ -1,6 +1,7 @@
 import React from "react";
 import FormatedDate from "./FormatedDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherInfo(props){
     return (
@@ -16,11 +17,9 @@ export default function WeatherInfo(props){
       </ul>
       <div className = "row clearfix justify-content-between">
           <div className = "col-6 clearfix">
-           
-            <WeatherIcon code={props.data.icon}/>
-          
-                
-            <span className="temperature">{Math.round(props.data.temperature)}</span><span className="units">℃</span>
+              <WeatherIcon code={props.data.icon}/>           
+              <WeatherTemperature celsius={props.data.temperature}/>
+                           
           </div>
           <div className="col-6">
             <ul className= "conditions px-5">

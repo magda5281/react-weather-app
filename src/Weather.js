@@ -38,10 +38,10 @@ export default function Weather(props) {
     description: response.data.weather[0].description,
     date: new Date(response.data.dt * 1000),
     icon: response.data.weather[0].icon
-  })}
- 
-  
 
+  })}
+  
+ 
   function Search(){
     const apiKey = "e9c021b631259222d3dcbc9761c3c90c";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -55,7 +55,6 @@ export default function Weather(props) {
 
   function handleCityChange(event){
     setCity(event.target.value);
-
   }
 
 if (weatherData.ready) {
@@ -81,8 +80,7 @@ if (weatherData.ready) {
           </div>
         </div>
       </form>   
-      <WeatherInfo data={weatherData}/>    
-      
+      <WeatherInfo data={weatherData}/>         
     </div> 
     );
 } else {

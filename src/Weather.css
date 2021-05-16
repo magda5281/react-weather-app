@@ -42,11 +42,15 @@
 .Weather .units {
   line-height: 16px;
   position: relative;
-  top: -23px;
 }
 .Weather canvas {
   line-height: 64px;
   vertical-align: middle;
   display: inline-block;
   margin-top: 10px;
+}
+
+.Weather .WeatherTemperature {
+  display: inline-block;
+  vertical-align: middle;
 }
