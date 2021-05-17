@@ -28,7 +28,7 @@ return (
         <ReactAnimatedWeather
         icon={iconMapping[props.code]}
         color="#0B5ED7"
-        size = {64}
+        size = {props.size}
         animate = {true}
   />
   );
