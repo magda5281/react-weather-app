@@ -61,7 +61,9 @@ export default function Weather(props) {
   }
 
 if (weatherData.ready) {
+  console.log("Pawel")
   return (
+    
     <div className="Weather">     
       <form onSubmit = {handleSubmit}>
         <div className="row mb-2">
@@ -89,7 +91,7 @@ if (weatherData.ready) {
     );
 } else {
     Search()
-  
+   console.log ("Magda")
   return "Loading the weather..."
 } 
 }

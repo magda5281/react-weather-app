@@ -12,10 +12,18 @@ export default function WeatherForecast(props){
       loaded: true,
       max:response.data.daily[0].temp.max,
       min:response.data.daily[0].temp.min,
-      day:response.data.daily[0].dt,
+      day:new Date(response.data.daily[0].dt*1000),
       icon: response.data.daily[0].weather[0].icon
     });
     
+  }
+
+  function formatDay(props){
+
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+    let forecastDay = days[props.forecastData.day.getDay()];
+    return forecastDay;
+
   }
 
   if (forecastData.loaded){
@@ -24,7 +32,7 @@ export default function WeatherForecast(props){
           <div className="row">
               <div className="col">
                 <div className="WeatherForecast-day">
-                  {forecastData.day}
+                 {formatDay(forecastData.day)}
                 </div>
                 <WeatherIcon code={forecastData.icon} size={34}/> 
                 <div className="WeatherForecast-temperature">
