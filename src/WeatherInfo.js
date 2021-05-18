@@ -17,7 +17,7 @@ export default function WeatherInfo(props){
       </ul>
       <div className = "row clearfix justify-content-between">
           <div className = "col-6 clearfix">
-              <WeatherIcon code={props.data.icon}/>           
+              <WeatherIcon code={props.data.icon} size = {64}/>           
               <WeatherTemperature celsius={props.data.temperature}/>
                            
           </div>
