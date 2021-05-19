@@ -1,8 +1,21 @@
 .WeatherForecast {
   text-align: center;
+  margin-top: 15px;
 }
 
 .WeatherForecast-temperature-min {
   opacity: 0.6;
   margin-left: 5px;
+}
+.WeatherForecast .col {
+  display: inline-block;
+  background-image: linear-gradient(
+    -225deg,
+    #5d9fff 0%,
+    #b8dcff 48%,
+    #6bbbff 100%
+  );
+  border-radius: 10px;
+  margin-right: 15px;
+  margin-left: 15px;
 }
